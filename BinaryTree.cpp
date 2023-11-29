@@ -83,3 +83,35 @@ void BinaryTree::makeDeletion(Node* &aNodePtr)
     }
 }
 
+void BinaryTree::insertNode(int aVal)
+{
+    Node* newNode = new Node(aVal);
+    insert(root, newNode);
+}
+
+bool BinaryTree::searchNode(int aVal)
+{
+    Node* nodePtr = root;
+    while(nodePtr != nullptr)
+    {
+        if(aVal < nodePtr->val)
+        {
+            nodePtr = nodePtr->left;
+        }
+        else if(aVal > nodePtr->val)
+        {
+            nodePtr = nodePtr->right;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void BinaryTree::remove(int aVal)
+{
+    deleteNode(aVal, root);
+}
